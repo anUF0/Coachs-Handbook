@@ -1,7 +1,7 @@
 //WIP Add actual Team/Player Model
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
 const teamSchema = new Schema({
   teamName: {

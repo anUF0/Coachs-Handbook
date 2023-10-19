@@ -1,6 +1,6 @@
 //WIP
 const { User, Team } = require('../models');
-const { signToken, AuthenticationError } = require('../utils');
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
