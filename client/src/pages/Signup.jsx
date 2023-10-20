@@ -33,7 +33,7 @@ const Signup = () => {
 
       Auth.login(data.addUser.token);
     } catch (err) {
-      console.err(e);
+      console.error(err);
       //WIP Error Message
     }
   };
