@@ -26,7 +26,6 @@ const resolvers = {
     },
     login: async (_, { email, password }) => {
       const user = await User.findOne({ email });
-
       if (!user) {
         throw AuthenticationError;
       }
