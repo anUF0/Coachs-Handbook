@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { Schema, model } = require(mongoose);
+const { Schema, model } = mongoose;
 
 const playerSchema = new Schema({
   //playerNumber: {
@@ -30,10 +30,7 @@ const playerSchema = new Schema({
     type: Number,
     required: true,
   },
-  skillsAndTraits: {
-    type: Array,
-    default: [],
-  },
+  skillsAndTraits: [{ type: String, trim: true }],
   cost: {
     type: Number,
     required: true,

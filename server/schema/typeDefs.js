@@ -10,12 +10,20 @@ const typeDefs = `
   type Team {
     _id: ID
     teamName: String
-    players: Array
-    teamValue: Number
+    players: [Player]
+    teamValue: Int
   }
 
   type Player {
-  
+    _id: ID
+    postion: String
+    MA: Int!
+    ST: Int!
+    AG: Int!
+    PA: Int!
+    AV: Int!
+    skillsAndTraits: [String]
+    cost: Int
   }
 
   type Auth {
@@ -32,8 +40,9 @@ const typeDefs = `
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPlayer(teamId: ID!, postion: Num!, MA: Num!, ST: Num!, AG: Num!, PA: Num!, AV: Num!, skillsAndTraits: Array, cost: Num!): Team
-    removePlayer(team: ID!, playerId: ID!)
+    addTeam(userId: ID!, teamName:String!, coachName: String!): User
+    addPlayer(teamId: ID!, postion: Int!, MA: Int!, ST: Int!, AG: Int!, PA: Int!, AV: Int!, skillsAndTraits: [String], cost: Int!): Team
+    removePlayer(team: ID!, playerId: ID!): Team
   }
 `;
 

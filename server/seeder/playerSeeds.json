@@ -15,7 +15,7 @@
     "AG": 3,
     "PA": 2,
     "AV": 9,
-    "skillsAndTraits:": ["Pass", "Sure Hands"],
+    "skillsAndTraits": ["Pass", "Sure Hands"],
     "cost": 80000
   },
   {
@@ -25,7 +25,7 @@
     "AG": 3,
     "PA": 5,
     "AV": 8,
-    "skillsAndTraits:": ["Dodge", "Catch"],
+    "skillsAndTraits": ["Dodge", "Catch"],
     "cost": 65000
   },
   {
@@ -35,7 +35,7 @@
     "AG": 3,
     "PA": 4,
     "AV": 9,
-    "skillsAndTraits:": ["Block"],
+    "skillsAndTraits": ["Block"],
     "cost": 85000
   },
   {
@@ -45,21 +45,21 @@
     "AG": 3,
     "PA": 4,
     "AV": 7,
-    "skillsAndTraits:": ["Dodge", "Right Stuff", "Stunty"],
+    "skillsAndTraits": ["Dodge", "Right Stuff", "Stunty"],
     "cost": 30000
   },
   {
-    "postion": "Orge",
+    "postion": "Ogre",
     "MA": 5,
     "ST": 5,
     "AG": 4,
     "PA": 5,
     "AV": 10,
-    "skillsAndTraits:": [
+    "skillsAndTraits": [
       "Bone Head",
       "Loner(4+)",
       "Mighty Blow(+1)",
-      "Thick SKull",
+      "Thick Skull",
       "Thow Team-mate"
     ],
     "cost": 140000

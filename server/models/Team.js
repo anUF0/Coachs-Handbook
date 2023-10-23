@@ -1,16 +1,24 @@
 //WIP Add actual Team/Player Model
 const mongoose = require('mongoose');
-const Player = require('./');
+const Player = require('./Player');
 
 const { Schema, model } = mongoose;
 
 const teamSchema = new Schema({
   teamName: {
     type: String,
+    required: true,
   },
-  players: [Player.Schema],
+  coachName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  players: [Player.schema],
   teamValue: {
     type: Number,
+    required: true,
+    default: 0,
   },
 });
 

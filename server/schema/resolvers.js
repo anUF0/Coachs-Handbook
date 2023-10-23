@@ -1,5 +1,5 @@
 //WIP
-const { User, Team } = require('../models');
+const { User, Team, Player } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -9,11 +9,13 @@ const resolvers = {
       //Team are not being populated here because it would be too cumbersome
     },
     user: async (_, { _id }) => {
-      return User.findOne({ _id }).populate('team');
+      return User.findOne({ _id }).populate('team').populate('players');
     },
     me: async (_, _args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('team');
+        return User.findOne({ _id: context.user._id })
+          .populate('team')
+          .populate('players');
       }
       throw AuthenticationError;
     },
@@ -39,43 +41,64 @@ const resolvers = {
       const token = signToken(user);
       return { user, token };
     },
+    addTeam: async (_, { teamName }, context) => {
+      if (context.user) {
+        const team = await Team.create({
+          teamName,
+          coachName: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { team: team._id } }
+        );
+
+        return team;
+      }
+      throw AuthenticationError;
+    },
     addPlayer: async (
       _,
-      { teamId, postion, MA, ST, AG, PA, AV, skillsAndTraits, cost },
+      { teamName, postion, MA, ST, AG, PA, AV, skillsAndTraits, cost },
       context
     ) => {
+      if (context.user) {
+        const player = await Player.create({
+          postion,
+          MA,
+          ST,
+          AG,
+          PA,
+          AV,
+          skillsAndTraits,
+          cost,
+        });
+
+        await Team.findOneAndUpdate(
+          { teamName: teamName },
+          { $addToSet: { players: player._id } }
+        );
+
+        return player;
+      }
+      throw AuthenticationError;
+    },
+    removePlayer: async (_, { teamId, playerId }, context) => {
       if (context.user) {
         return Team.findOneandUpdate(
           { _id: teamId },
           {
-            $addToSet: {
-              players: { postion, MA, ST, AG, PA, AV, skillsAndTraits, cost },
+            $pull: {
+              players: {
+                _id: playerId,
+              },
             },
           },
-          {
-            new: true,
-            runValidators: true,
-          }
+          { new: true }
         );
       }
       throw AuthenticationError;
     },
-  },
-  removePlayer: async (_, { teamId, playerId }, context) => {
-    if (context.user) {
-      return Team.findOneandUpdate(
-        { _id: teamId },
-        {
-          $pull: {
-            players: {
-              _id: playerId,
-            },
-          },
-        },
-        { new: true }
-      );
-    }
-    throw AuthenticationError;
   },
 };
 
