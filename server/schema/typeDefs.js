@@ -9,7 +9,13 @@ const typeDefs = `
 
   type Team {
     _id: ID
-    teamName: String!
+    teamName: String
+    players: Array
+    teamValue: Number
+  }
+
+  type Player {
+  
   }
 
   type Auth {
@@ -26,6 +32,8 @@ const typeDefs = `
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addPlayer(teamId: ID!, postion: Num!, MA: Num!, ST: Num!, AG: Num!, PA: Num!, AV: Num!, skillsAndTraits: Array, cost: Num!): Team
+    removePlayer(team: ID!, playerId: ID!)
   }
 `;
 

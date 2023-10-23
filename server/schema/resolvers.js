@@ -39,6 +39,43 @@ const resolvers = {
       const token = signToken(user);
       return { user, token };
     },
+    addPlayer: async (
+      _,
+      { teamId, postion, MA, ST, AG, PA, AV, skillsAndTraits, cost },
+      context
+    ) => {
+      if (context.user) {
+        return Team.findOneandUpdate(
+          { _id: teamId },
+          {
+            $addToSet: {
+              players: { postion, MA, ST, AG, PA, AV, skillsAndTraits, cost },
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw AuthenticationError;
+    },
+  },
+  removePlayer: async (_, { teamId, playerId }, context) => {
+    if (context.user) {
+      return Team.findOneandUpdate(
+        { _id: teamId },
+        {
+          $pull: {
+            players: {
+              _id: playerId,
+            },
+          },
+        },
+        { new: true }
+      );
+    }
+    throw AuthenticationError;
   },
 };
 

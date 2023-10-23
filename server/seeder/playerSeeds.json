@@ -1,0 +1,67 @@
+[
+  {
+    "postion": "Lineman",
+    "MA": 6,
+    "ST": 3,
+    "AG": 3,
+    "PA": 4,
+    "AV": 9,
+    "cost": 50000
+  },
+  {
+    "postion": "Thrower",
+    "MA": 6,
+    "ST": 3,
+    "AG": 3,
+    "PA": 2,
+    "AV": 9,
+    "skillsAndTraits:": ["Pass", "Sure Hands"],
+    "cost": 80000
+  },
+  {
+    "postion": "Catcher",
+    "MA": 8,
+    "ST": 2,
+    "AG": 3,
+    "PA": 5,
+    "AV": 8,
+    "skillsAndTraits:": ["Dodge", "Catch"],
+    "cost": 65000
+  },
+  {
+    "postion": "Blitzer",
+    "MA": 7,
+    "ST": 3,
+    "AG": 3,
+    "PA": 4,
+    "AV": 9,
+    "skillsAndTraits:": ["Block"],
+    "cost": 85000
+  },
+  {
+    "postion": "Halfling Hopeful",
+    "MA": 5,
+    "ST": 2,
+    "AG": 3,
+    "PA": 4,
+    "AV": 7,
+    "skillsAndTraits:": ["Dodge", "Right Stuff", "Stunty"],
+    "cost": 30000
+  },
+  {
+    "postion": "Orge",
+    "MA": 5,
+    "ST": 5,
+    "AG": 4,
+    "PA": 5,
+    "AV": 10,
+    "skillsAndTraits:": [
+      "Bone Head",
+      "Loner(4+)",
+      "Mighty Blow(+1)",
+      "Thick SKull",
+      "Thow Team-mate"
+    ],
+    "cost": 140000
+  }
+]
