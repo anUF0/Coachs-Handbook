@@ -83,12 +83,12 @@ const resolvers = {
     },
     addPlayer: async (
       _,
-      { teamName, postion, MA, ST, AG, PA, AV, skillsAndTraits, cost },
+      { teamId, position, MA, ST, AG, PA, AV, skillsAndTraits, cost },
       context
     ) => {
       if (context.user) {
         const player = await Player.create({
-          postion,
+          position,
           MA,
           ST,
           AG,
@@ -99,8 +99,8 @@ const resolvers = {
         });
 
         await Team.findOneAndUpdate(
-          { teamName: teamName },
-          { $addToSet: { players: player._id } }
+          { _id: teamId },
+          { $addToSet: { players: player } }
         );
 
         return player;
