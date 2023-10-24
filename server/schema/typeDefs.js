@@ -4,7 +4,7 @@ const typeDefs = `
     username: String
     email: String
     password: String
-    team: [Team]
+    teams: [Team]
   }
 
   type Team {
@@ -35,6 +35,7 @@ const typeDefs = `
     users: [User]
     user(_id: ID!): User
     me: User
+    teams: [Team]
     players: [Player]
   }
 
@@ -42,6 +43,7 @@ const typeDefs = `
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addTeam(teamName:String!): Team
+    removeTeam(teamId: ID!): Team
     addPlayer(teamId: ID!, postion: Int!, MA: Int!, ST: Int!, AG: Int!, PA: Int!, AV: Int!, skillsAndTraits: [String], cost: Int!): Team
     removePlayer(team: ID!, playerId: ID!): Team
   }

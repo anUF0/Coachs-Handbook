@@ -9,15 +9,18 @@ const resolvers = {
       //Team are not being populated here because it would be too cumbersome
     },
     user: async (_, { _id }) => {
-      return User.findOne({ _id }).populate('team').populate('players');
+      return User.findOne({ _id }).populate('teams'); //.populate('players')//;
     },
     me: async (_, _args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id })
-          .populate('team')
+          .populate('teams')
           .populate('players');
       }
       throw AuthenticationError;
+    },
+    teams: async () => {
+      return Team.find();
     },
     players: async () => {
       return Player.find();
@@ -45,17 +48,33 @@ const resolvers = {
       return { user, token };
     },
     addTeam: async (_, { teamName }, context) => {
-      console.log(context);
       if (context.user) {
         const team = await Team.create({
           teamName,
           coachName: context.user.username,
         });
         console.log(team);
+        console.log(team._id);
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { team: team._id } }
+          { $push: { teams: team } }
+        );
+
+        console.log(team.teamName);
+        return team;
+      }
+      throw AuthenticationError;
+    },
+    removeTeam: async (_, { teamId }, context) => {
+      if (context.user) {
+        const team = await Team.findByIdAndDelete({
+          _id: teamId,
+          coachName: context.user.username,
+        });
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { teams: team._id } }
         );
 
         return team;
