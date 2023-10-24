@@ -6,7 +6,7 @@ const playerSchema = new Schema({
   //playerNumber: {
   //  type: Number,
   //},
-  postion: {
+  position: {
     type: String,
     required: true,
   },

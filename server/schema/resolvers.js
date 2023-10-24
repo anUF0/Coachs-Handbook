@@ -19,6 +19,9 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    players: async () => {
+      return Player.find();
+    },
   },
   Mutation: {
     addUser: async (_, { username, email, password }) => {
@@ -42,11 +45,13 @@ const resolvers = {
       return { user, token };
     },
     addTeam: async (_, { teamName }, context) => {
+      console.log(context);
       if (context.user) {
         const team = await Team.create({
           teamName,
           coachName: context.user.username,
         });
+        console.log(team);
 
         await User.findOneAndUpdate(
           { _id: context.user._id },

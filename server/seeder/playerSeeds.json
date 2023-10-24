@@ -1,6 +1,6 @@
 [
   {
-    "postion": "Lineman",
+    "position": "Lineman",
     "MA": 6,
     "ST": 3,
     "AG": 3,
@@ -9,7 +9,7 @@
     "cost": 50000
   },
   {
-    "postion": "Thrower",
+    "position": "Thrower",
     "MA": 6,
     "ST": 3,
     "AG": 3,
@@ -19,7 +19,7 @@
     "cost": 80000
   },
   {
-    "postion": "Catcher",
+    "position": "Catcher",
     "MA": 8,
     "ST": 2,
     "AG": 3,
@@ -29,7 +29,7 @@
     "cost": 65000
   },
   {
-    "postion": "Blitzer",
+    "position": "Blitzer",
     "MA": 7,
     "ST": 3,
     "AG": 3,
@@ -39,7 +39,7 @@
     "cost": 85000
   },
   {
-    "postion": "Halfling Hopeful",
+    "position": "Halfling Hopeful",
     "MA": 5,
     "ST": 2,
     "AG": 3,
@@ -49,7 +49,7 @@
     "cost": 30000
   },
   {
-    "postion": "Ogre",
+    "position": "Ogre",
     "MA": 5,
     "ST": 5,
     "AG": 4,

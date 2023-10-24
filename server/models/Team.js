@@ -17,7 +17,6 @@ const teamSchema = new Schema({
   players: [Player.schema],
   teamValue: {
     type: Number,
-    required: true,
     default: 0,
   },
 });
