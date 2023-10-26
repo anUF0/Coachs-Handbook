@@ -48,6 +48,6 @@ const typeDefs = `
     addPlayer(teamId: ID!, position: String!, MA: Int!, ST: Int!, AG: Int!, PA: Int!, AV: Int!, skillsAndTraits: [String], cost: Int!): Player
     removePlayer(teamId: ID!, playerId: ID!): Player
   }
-`;
+ `;
 
 module.exports = typeDefs;

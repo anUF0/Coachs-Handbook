@@ -1,7 +1,8 @@
 const db = require('../config/connection');
-const { User, Player } = require('../models');
+const { User, Player, Team } = require('../models');
 const userSeeds = require('./userSeeds.json');
 const playerSeeds = require('./playerSeeds.json');
+const teamSeeds = require('./teamSeeds.json');
 const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
@@ -17,6 +18,14 @@ db.once('open', async () => {
     await cleanDB('Player', 'players');
 
     await Player.create(playerSeeds);
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
+  try {
+    await cleanDB('Team', 'teams');
+
+    await Team.create(teamSeeds);
   } catch (err) {
     console.error(err);
     process.exit(1);
