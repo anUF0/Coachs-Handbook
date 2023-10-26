@@ -45,7 +45,7 @@ const typeDefs = `
     addTeam(teamName:String!): Team
     removeTeam(teamId: ID!): Team
     addPlayer(teamId: ID!, position: String!, MA: Int!, ST: Int!, AG: Int!, PA: Int!, AV: Int!, skillsAndTraits: [String], cost: Int!): Player
-    removePlayer(team: ID!, playerId: ID!): Team
+    removePlayer(teamId: ID!, playerId: ID!): Player
   }
 `;
 

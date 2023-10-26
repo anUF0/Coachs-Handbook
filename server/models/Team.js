@@ -14,7 +14,7 @@ const teamSchema = new Schema({
     required: true,
     trim: true,
   },
-  players: [Player.schema],
+  players: [{ type: Schema.ObjectId, ref: 'Player' }],
   teamValue: {
     type: Number,
     default: 0,

@@ -1,21 +1,24 @@
 //WIP
 const { User, Team, Player } = require('../models');
+const { populate } = require('../models/Player');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find();
+      return User.find().populate('teams');
       //Team are not being populated here because it would be too cumbersome
     },
     user: async (_, { _id }) => {
-      return User.findOne({ _id }).populate('teams'); //.populate('players')//;
+      return User.findOne({ _id })
+        .populate('teams')
+        .populate({ path: 'teams', populate: 'players' });
     },
     me: async (_, _args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id })
           .populate('teams')
-          .populate('players');
+          .populate({ path: 'teams', populate: 'players' });
       }
       throw AuthenticationError;
     },
@@ -48,17 +51,18 @@ const resolvers = {
       return { user, token };
     },
     addTeam: async (_, { teamName }, context) => {
+      console.log(context.user);
+
       if (context.user) {
         const team = await Team.create({
           teamName,
           coachName: context.user.username,
         });
-        console.log(team);
-        console.log(team._id);
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $push: { teams: team } }
+        await User.findByIdAndUpdate(
+          context.user._id,
+          { $push: { teams: team._id } },
+          { new: true }
         );
 
         console.log(team.teamName);
@@ -68,13 +72,16 @@ const resolvers = {
     },
     removeTeam: async (_, { teamId }, context) => {
       if (context.user) {
-        const team = await Team.findByIdAndDelete({
+        const team = await Team.findOneAndDelete({
           _id: teamId,
           coachName: context.user.username,
         });
-        await User.findByIdAndUpdate(
+
+        console.log(context.user);
+        await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { teams: team._id } }
+          { $pull: { teams: team._id } },
+          { new: true }
         );
 
         return team;
@@ -109,17 +116,19 @@ const resolvers = {
     },
     removePlayer: async (_, { teamId, playerId }, context) => {
       if (context.user) {
-        return Team.findOneandUpdate(
+        console.log(teamId);
+        console.log(playerId);
+
+        const player = await Player.findOneAndDelete({
+          _id: playerId,
+        });
+
+        await Team.findOneAndUpdate(
           { _id: teamId },
-          {
-            $pull: {
-              players: {
-                _id: playerId,
-              },
-            },
-          },
+          { $pull: { players: player._id } },
           { new: true }
         );
+        return player;
       }
       throw AuthenticationError;
     },
