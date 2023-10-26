@@ -25,6 +25,9 @@ const resolvers = {
     teams: async () => {
       return Team.find();
     },
+    team: async (_, { _id }) => {
+      return Team.findOne({ _id }).populate('Players');
+    },
     players: async () => {
       return Player.find();
     },

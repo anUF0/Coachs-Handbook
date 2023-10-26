@@ -36,6 +36,7 @@ const typeDefs = `
     user(_id: ID!): User
     me: User
     teams: [Team]
+    team(_id: ID!): Team
     players: [Player]
   }
 
