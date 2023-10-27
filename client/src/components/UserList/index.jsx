@@ -1,18 +1,13 @@
 import { Link } from 'react-router-dom';
 
-const UserList = ({
-  users,
-  username,
-  showTitle = true,
-  showUsername = true,
-}) => {
+const UserList = ({ users, title, showTitle = true, showUsername = true }) => {
   if (!users.length) {
     return <h3>No Coaches Yet</h3>;
   }
 
   return (
     <div>
-      {showTitle && <h3>{username}</h3>}
+      {showTitle && <h3>{title}</h3>}
       {users &&
         users.map((user) => (
           <div key={user._id} className="card mb-3">
@@ -31,9 +26,9 @@ const UserList = ({
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
-              to={`/${user.teams._id}`}
+              to={`/profile/${user._id}`}
             >
-              Join the discussion on this thought.
+              Checkout This Coach's Team.
             </Link>
           </div>
         ))}

@@ -14,8 +14,8 @@ const Header = () => {
           <Link className="text-light" to="/">
             <h1 className="m-0">The Coaches Handbook</h1>
           </Link>
-          <p className="m-0">
-            Keep tabs on Your and Your Friend's Fantastical Football Teams!
+          <p className="mx-2">
+            Keep Tabs on You and Your Friend's Fantastical Football Teams!
           </p>
         </div>
         <div>

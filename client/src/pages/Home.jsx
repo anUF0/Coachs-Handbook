@@ -13,9 +13,11 @@ const Home = () => {
         <div
           className="col-12 col-md-10 mb-3 p-3"
           style={{ border: '1px dotted #1a1a1a' }}
-        ></div>
+        >
+          Check Out Our Other Hopeful Coaches!
+        </div>
         <div>
-          <UserList users={users} title="" />
+          <UserList users={users} username="" />
         </div>
       </div>
     </main>
