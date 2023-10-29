@@ -9,9 +9,10 @@ const typeDefs = `
 
   type Team {
     _id: ID
-    teamName: String
+    teamName: String!
     players: [Player]
     teamValue: Int
+    coachName: String!
   }
 
   type Player {

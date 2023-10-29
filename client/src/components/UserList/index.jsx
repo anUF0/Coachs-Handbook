@@ -15,7 +15,7 @@ const UserList = ({ users, title, showTitle = true, showUsername = true }) => {
               {showUsername ? (
                 <Link
                   className="text-light"
-                  to={`/profiles/${user.username}`}
+                  to={`/profiles/${user._id}`}
                 ></Link>
               ) : (
                 <></>

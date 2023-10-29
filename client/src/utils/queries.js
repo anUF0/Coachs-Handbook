@@ -71,7 +71,7 @@ export const QUERY_PLAYERS = gql`
 `;
 
 export const QUERY_SINGLE_TEAM = gql`
-  query Query($id: ID!) {
+  query getTeam($id: ID!) {
     team(_id: $id) {
       teamName
       players {
