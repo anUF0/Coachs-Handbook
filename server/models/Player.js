@@ -13,28 +13,22 @@ const playerSchema = new Schema({
   },
   MA: {
     type: Number,
-    required: true,
   },
   ST: {
     type: Number,
-    required: true,
   },
   AG: {
     type: Number,
-    required: true,
   },
   PA: {
     type: Number,
-    required: true,
   },
   AV: {
     type: Number,
-    required: true,
   },
   skillsAndTraits: [{ type: String, trim: true }],
   cost: {
     type: Number,
-    required: true,
   },
 });
 

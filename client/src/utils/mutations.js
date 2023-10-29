@@ -35,24 +35,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_PLAYER = gql`
-  mutation AddPlayer(
-    $position: String!
-    $ma: Int!
-    $st: Int!
-    $ag: Int!
-    $pa: Int!
-    $av: Int!
-    $cost: Int!
-  ) {
-    addPlayer(
-      position: $position
-      MA: $ma
-      ST: $st
-      AG: $ag
-      PA: $pa
-      AV: $av
-      cost: $cost
-    ) {
+  mutation AddPlayer($position: String!) {
+    addPlayer(position: $position) {
       _id
       coachName
       position

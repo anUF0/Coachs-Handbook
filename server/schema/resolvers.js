@@ -40,21 +40,10 @@ const resolvers = {
       const token = signToken(user);
       return { user, token };
     },
-    addPlayer: async (
-      _,
-      { position, MA, ST, AG, PA, AV, skillsAndTraits, cost },
-      context
-    ) => {
+    addPlayer: async (_, { position }, context) => {
       if (context.user) {
         const player = await Player.create({
           position,
-          MA,
-          ST,
-          AG,
-          PA,
-          AV,
-          skillsAndTraits,
-          cost,
           coachName: context.user.username,
         });
         await User.findOneAndUpdate(

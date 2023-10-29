@@ -21,7 +21,7 @@ const PlayerForm = () => {
       const { data } = await addPlayer({
         variables: {
           positionText,
-          thoughtAuthor: Auth.getProfile().data.username,
+          coachName: Auth.getProfile().data.username,
         },
       });
 

@@ -12,11 +12,11 @@ const typeDefs = `
     _id: ID
     coachName: String!
     position: String!
-    MA: Int!
-    ST: Int!
-    AG: Int!
-    PA: Int!
-    AV: Int!
+    MA: Int
+    ST: Int
+    AG: Int
+    PA: Int
+    AV: Int
     skillsAndTraits: [String]
     cost: Int
   }
@@ -36,7 +36,7 @@ const typeDefs = `
   type Mutation {
     addUser(username: String!, teamName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPlayer(position: String!, MA: Int!, ST: Int!, AG: Int!, PA: Int!, AV: Int!, skillsAndTraits: [String], cost: Int!): Player
+    addPlayer(position: String!): Player
     removePlayer(playerId: ID!): Player
   }
  `;
