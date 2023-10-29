@@ -6,12 +6,7 @@ export const QUERY_USERS = gql`
       _id
       username
       email
-      password
-      teams {
-        _id
-        teamName
-        teamValue
-      }
+      teamName
     }
   }
 `;
@@ -22,34 +17,40 @@ export const QUERY_SINGLE_USER = gql`
       _id
       username
       email
-      teams {
+      teamName
+      players {
         _id
-        teamName
+        position
+        MA
+        ST
+        AG
+        PA
+        AV
+        skillsAndTraits
+        cost
       }
     }
   }
 `;
 
 export const QUERY_ME = gql`
-  query me {
-    s
+  query Me {
     me {
       _id
       username
       email
-      teams {
-        _id
-        teamName
-      }
-    }
-  }
-`;
-
-export const QUERY_TEAMS = gql`
-  query getTeams {
-    teams {
-      _id
       teamName
+      players {
+        _id
+        position
+        MA
+        ST
+        AG
+        PA
+        AV
+        skillsAndTraits
+        cost
+      }
     }
   }
 `;
@@ -58,26 +59,15 @@ export const QUERY_PLAYERS = gql`
   query getPlayers {
     players {
       _id
+      coachName
       position
       MA
       ST
       AG
-      AV
       PA
+      AV
       skillsAndTraits
       cost
-    }
-  }
-`;
-
-export const QUERY_SINGLE_TEAM = gql`
-  query getTeam($id: ID!) {
-    team(_id: $id) {
-      teamName
-      players {
-        _id
-        position
-      }
     }
   }
 `;

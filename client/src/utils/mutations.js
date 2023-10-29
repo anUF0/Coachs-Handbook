@@ -13,7 +13,7 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
+  mutation AddUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
       token
       user {
@@ -24,19 +24,8 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_TEAM = gql`
-  mutation Mutation($teamName: String!) {
-    addTeam(teamName: $teamName) {
-      teamName
-      teamValue
-      coachName
-    }
-  }
-`;
-
 export const ADD_PLAYER = gql`
   mutation AddPlayer(
-    $teamId: ID!
     $position: String!
     $ma: Int!
     $st: Int!
@@ -46,7 +35,6 @@ export const ADD_PLAYER = gql`
     $cost: Int!
   ) {
     addPlayer(
-      teamId: $teamId
       position: $position
       MA: $ma
       ST: $st
@@ -56,29 +44,22 @@ export const ADD_PLAYER = gql`
       cost: $cost
     ) {
       _id
+      coachName
       position
       MA
       ST
       AG
-      AV
       PA
+      AV
+      skillsAndTraits
       cost
     }
   }
 `;
 
-export const DELETE_TEAM = gql`
-  mutation RemoveTeam($teamId: ID!) {
-    removeTeam(teamId: $teamId) {
-      _id
-      teamName
-    }
-  }
-`;
-
 export const DELETE_PLAYER = gql`
-  mutation RemovePlayer($teamId: ID!, $playerId: ID!) {
-    removePlayer(teamId: $teamId, playerId: $playerId) {
+  mutation RemovePlayer($playerId: ID!) {
+    removePlayer(playerId: $playerId) {
       _id
       position
     }
