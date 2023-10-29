@@ -34,7 +34,6 @@ const Signup = () => {
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
-      //WIP Error Message
     }
   };
 
