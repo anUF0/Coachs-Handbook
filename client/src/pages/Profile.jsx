@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client';
 
 import TeamForm from '../components/TeamForm';
 import TeamList from '../components/TeamList';
+import PlayerList from '../components/PlayerList';
+import PlayerForm from '../components/PlayerForm';
 
 import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/queries';
 
@@ -54,6 +56,7 @@ const Profile = () => {
             style={{ border: '1px dotted #1a1a1a' }}
           >
             <TeamForm />
+            <PlayerForm />
           </div>
         )}
       </div>
