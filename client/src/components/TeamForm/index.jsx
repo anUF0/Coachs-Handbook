@@ -2,9 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_TEAM } from '../../utils/mutations';
-
-import { QUERY_ME, QUERY_SINGLE_TEAM } from '../../utils/queries';
+import { QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 

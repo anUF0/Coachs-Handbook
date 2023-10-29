@@ -8,6 +8,7 @@ import Auth from '../utils/auth';
 const Signup = () => {
   const [formState, setFormState] = useState({
     username: '',
+    teamName: '',
     email: '',
     password: '',
   });
@@ -56,6 +57,14 @@ const Signup = () => {
                   name="username"
                   type="text"
                   value={formState.name}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Your team's name"
+                  name="teamName"
+                  type="text"
+                  value={formState.teamName}
                   onChange={handleChange}
                 />
                 <input

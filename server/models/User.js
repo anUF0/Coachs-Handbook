@@ -10,6 +10,11 @@ const userSchema = new Schema({
     unique: true,
     trim: true,
   },
+  teamName: {
+    type: String,
+    required: true,
+    maxLength: 50,
+  },
   email: {
     type: String,
     required: true,
@@ -23,11 +28,6 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 8,
-  },
-  teamName: {
-    type: String,
-    required: true,
-    maxLength: 50,
   },
   players: [{ type: Schema.Types.ObjectId, ref: 'Player' }],
 });
