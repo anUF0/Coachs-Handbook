@@ -13,14 +13,11 @@ const UserList = ({ users }) => {
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {`${user.username}'s`}
             </h4>
-            <div className="card-body bg-light p-2">
-              <p className="strong">{user.teamName}</p>
-            </div>
             <Link
-              className="btn btn-primary btn-block btn-squared"
+              className="btn btn-light btn-block btn-squared"
               to={`/profile/${user._id}`}
             >
-              Checkout This Coach's Team.
+              <p className="strong p-3">{user.teamName}</p>
             </Link>
           </div>
         ))}

@@ -1,8 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import TeamForm from '../components/TeamForm';
-import TeamList from '../components/TeamList';
 import PlayerList from '../components/PlayerList';
 import PlayerForm from '../components/PlayerForm';
 
@@ -43,10 +41,10 @@ const Profile = () => {
         </h2>
 
         <div className="col-12 col-md-10 mb-5">
-          <TeamList
-            teams={user.teams}
-            title={`${user.username}'s teams...`}
-            showTitle={false}
+          <PlayerList
+            players={user.players}
+            teamName={`${user.teamName}`}
+            showTeamName={false}
             showUsername={false}
           />
         </div>
@@ -55,7 +53,6 @@ const Profile = () => {
             className="col-12 col-md-10 mb-3 p-3"
             style={{ border: '1px dotted #1a1a1a' }}
           >
-            <TeamForm />
             <PlayerForm />
           </div>
         )}
