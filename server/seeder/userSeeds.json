@@ -2,16 +2,19 @@
   {
     "username": "Bimmy Herrington",
     "email": "bimmyH@example.com.au",
-    "password": "password"
+    "password": "password",
+    "teamName": "The Screaming Hawks"
   },
   {
     "username": "Jim Masspro",
     "email": "grm@example.com.fed",
-    "password": "password"
+    "password": "password",
+    "teamName": "The Bright Crusaders"
   },
   {
     "username": "Tanya",
     "email": "tgirl@example.com.ru",
-    "password": "password"
+    "password": "password",
+    "teamName": "The Orange Dukes"
   }
 ]

@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema, model } = mongoose;
 const bcrypt = require('bcrypt');
-const Team = require('./Team');
 
 const userSchema = new Schema({
   username: {
@@ -25,7 +24,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
-  teams: [{ type: Schema.ObjectId, ref: 'Team' }],
+  teamName: {
+    type: String,
+    required: true,
+    maxLength: 50,
+  },
+  players: [{ type: Schema.Types.ObjectId, ref: 'Player' }],
 });
 
 userSchema.pre('save', async function (next) {

@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
 const playerSchema = new Schema({
-  //playerNumber: {
-  //  type: Number,
-  //},
+  coachName: {
+    type: String,
+    required: true,
+  },
   position: {
     type: String,
     required: true,

@@ -1,5 +1,6 @@
 [
   {
+    "coachName": "Bimmy Herrington",
     "position": "Lineman",
     "MA": 6,
     "ST": 3,
@@ -9,6 +10,7 @@
     "cost": 50000
   },
   {
+    "coachName": "Bimmy Herrington",
     "position": "Thrower",
     "MA": 6,
     "ST": 3,
@@ -19,6 +21,7 @@
     "cost": 80000
   },
   {
+    "coachName": "Bimmy Herrington",
     "position": "Catcher",
     "MA": 8,
     "ST": 2,
@@ -29,6 +32,7 @@
     "cost": 65000
   },
   {
+    "coachName": "Tanya",
     "position": "Blitzer",
     "MA": 7,
     "ST": 3,
@@ -39,6 +43,7 @@
     "cost": 85000
   },
   {
+    "coachName": "Jim Masspro",
     "position": "Halfling Hopeful",
     "MA": 5,
     "ST": 2,
@@ -49,6 +54,7 @@
     "cost": 30000
   },
   {
+    "coachName": "Jim Masspro",
     "position": "Ogre",
     "MA": 5,
     "ST": 5,
