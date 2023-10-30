@@ -1,7 +1,11 @@
-const PlayerList = ({ players, teamName, showTeamName, showUsername }) => {
+const PlayerList = ({ players = [] }, teamName, showTeamName) => {
   if (!players.length) {
-    return <h3>Can Play the Game without Players</h3>;
+    return <h3>Can't Play the Game without Players</h3>;
   }
+
+  /// const formattedSkillAndTraits = players.map(
+  ///   (player) => player.skillsAndTraits
+  /// );
 
   return (
     <div>
@@ -11,8 +15,15 @@ const PlayerList = ({ players, teamName, showTeamName, showUsername }) => {
           <div key={player._id} className="card mb-3">
             <div>
               {' '}
-              <div className="card-body bg-light p-2">
-                <p>{player.position}</p>
+              <div className="p-3">
+                <p>
+                  Position: {player.position} | MA: {player.MA} | ST:{' '}
+                  {player.ST} | AG: {player.AG} | PA: {player.PA}+ | AV:{' '}
+                  {player.AV}+ | Skills and Traits:{' '}
+                  {/*formattedSkillAndTraits*/}
+                </p>
+                {/*!userParm && (
+                  <btn>X</btn>)*/}
               </div>
             </div>
           </div>

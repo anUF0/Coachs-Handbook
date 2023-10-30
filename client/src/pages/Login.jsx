@@ -9,7 +9,6 @@ const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
-  // update state based on form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -19,7 +18,6 @@ const Login = (props) => {
     });
   };
 
-  // submit form
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     console.log(formState);
@@ -32,8 +30,6 @@ const Login = (props) => {
     } catch (err) {
       console.error(err);
     }
-
-    // clear form values
     setFormState({
       email: '',
       password: '',

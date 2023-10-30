@@ -10,6 +10,12 @@ import Auth from '../../utils/auth';
 
 const PlayerForm = () => {
   const [positionText, setPositionText] = useState('');
+  const [MAValue, setMAValue] = useState('');
+  const [STValue, setSTValue] = useState('');
+  const [AGValue, setAGValue] = useState('');
+  const [PAValue, setPAValue] = useState('');
+  const [AVValue, setAVValue] = useState('');
+  const [skillsAndTraitsText, setSNTText] = useState('');
 
   const [addPlayer, { error }] = useMutation(ADD_PLAYER, {
     refetchQueries: [QUERY_PLAYERS, 'getPlayers', QUERY_ME, 'me'],
@@ -21,6 +27,12 @@ const PlayerForm = () => {
       const { data } = await addPlayer({
         variables: {
           positionText,
+          MAValue,
+          STValue,
+          AGValue,
+          PAValue,
+          AVValue,
+          skillsAndTraitsText,
           coachName: Auth.getProfile().data.username,
         },
       });
@@ -37,11 +49,29 @@ const PlayerForm = () => {
     if (name === 'positionText') {
       setPositionText(value);
     }
+    if (name === 'MAValue') {
+      setMAValue(value);
+    }
+    if (name === 'STValue') {
+      setSTValue(value);
+    }
+    if (name === 'AGValue') {
+      setAGValue(value);
+    }
+    if (name === 'PAValue') {
+      setPAValue(value);
+    }
+    if (name === 'AVValue') {
+      setAVValue(value);
+    }
+    if (name === 'skillsAndTraitsText') {
+      setSNTText(value);
+    }
   };
 
   return (
     <div>
-      <h3>Add New Players Below</h3>
+      <h3>Add A New Player Below</h3>
 
       {Auth.loggedIn() ? (
         <>
@@ -49,13 +79,61 @@ const PlayerForm = () => {
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
           >
-            <div className="col-12 col-lg-9">
+            <div className="col-12 flex-row">
               <textarea
                 name="positionText"
-                placeholder="Player Position goes here..."
+                placeholder="Position"
                 value={positionText}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
+                className="form-input col-2"
+                style={{ lineHeight: '1', resize: 'horizontal' }}
+                onChange={handleChange}
+              ></textarea>
+              <textarea
+                name="MAValue"
+                placeholder="MA"
+                value={MAValue}
+                className="form-input col-2"
+                style={{ lineHeight: '1', resize: 'horizontal' }}
+                onChange={handleChange}
+              ></textarea>
+              <textarea
+                name="STValue"
+                placeholder="ST"
+                value={STValue}
+                className="form-input col-2"
+                style={{ lineHeight: '1', resize: 'horizontal' }}
+                onChange={handleChange}
+              ></textarea>
+              <textarea
+                name="AGValue"
+                placeholder="AG"
+                value={AGValue}
+                className="form-input col-2"
+                style={{ lineHeight: '1', resize: 'horizontal' }}
+                onChange={handleChange}
+              ></textarea>
+              <textarea
+                name="PAValue"
+                placeholder="PA"
+                value={PAValue}
+                className="form-input col-2"
+                style={{ lineHeight: '1', resize: 'horizontal' }}
+                onChange={handleChange}
+              ></textarea>
+              <textarea
+                name="AVValue"
+                placeholder="AV"
+                value={AVValue}
+                className="form-input col-2 p-2"
+                style={{ lineHeight: '1', resize: 'horizontal' }}
+                onChange={handleChange}
+              ></textarea>
+              <textarea
+                name="skillsAndTraitsText"
+                placeholder="Skills/Traits"
+                value={skillsAndTraitsText}
+                className="form-input col-12"
+                style={{ lineHeight: '1', resize: 'horizontal' }}
                 onChange={handleChange}
               ></textarea>
             </div>
