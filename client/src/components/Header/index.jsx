@@ -12,7 +12,7 @@ const Header = () => {
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
           <Link className="text-light" to="/">
-            <h1 className="m-0">The Coaches Handbook</h1>
+            <h1 className="m-0">The Coach's Handbook</h1>
           </Link>
           <p className="mx-2">
             Keep Tabs on You and Your Friend's Fantastical Football Teams!

@@ -77,7 +77,7 @@ const Login = (props) => {
 
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
+                Incorrect Email or Password
               </div>
             )}
           </div>

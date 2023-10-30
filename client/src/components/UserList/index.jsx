@@ -15,7 +15,7 @@ const UserList = ({ users }) => {
             </h4>
             <Link
               className="btn btn-light btn-block btn-squared"
-              to={`/profile/${user._id}`}
+              to={`profile/${user._id}`}
             >
               <p className="strong p-3">{user.teamName}</p>
             </Link>

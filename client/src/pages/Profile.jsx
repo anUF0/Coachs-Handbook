@@ -21,17 +21,20 @@ const Profile = () => {
   //    }
   //  }
   //}, []);
-  debugger;
   const { userId: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_SINGLE_USER : QUERY_ME, {
-    variables: { userId: userParam },
+    variables: { id: userParam },
   });
 
   const user = data?.me || data?.user || {};
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  if (Auth.loggedIn() && Auth.getProfile().data._id === userParam) {
     return <Navigate to="/me" />;
   }
+  console.log({
+    userParam,
+    user,
+  });
 
   if (loading) {
     return <div>Loading...</div>;

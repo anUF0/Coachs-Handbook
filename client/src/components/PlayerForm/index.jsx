@@ -11,11 +11,12 @@ import Auth from '../../utils/auth';
 const PlayerForm = () => {
   const [formState, setFormState] = useState({
     position: '',
-    MA: 0,
-    ST: 0,
-    AG: 0,
-    PA: 0,
-    AV: 0,
+    MA: '',
+    ST: '',
+    AG: '',
+    PA: '',
+    AV: '',
+    skillsAndTraits: '',
   });
   const [addPlayer, { error }] = useMutation(ADD_PLAYER, {
     refetchQueries: [QUERY_PLAYERS, 'getPlayers', QUERY_ME, 'me'],
@@ -54,7 +55,7 @@ const PlayerForm = () => {
                 placeholder="Position"
                 value={formState.position}
                 className="form-input col-2"
-                style={{ lineHeight: '1', resize: 'horizontal' }}
+                style={{ lineHeight: '0.5', resize: 'horizontal' }}
                 onChange={handleChange}
               ></textarea>
               <input
@@ -105,14 +106,14 @@ const PlayerForm = () => {
               <textarea
                 name="skillsAndTraitsText"
                 placeholder="Skills/Traits"
-                value={formState.skillsAndTraitsText}
+                value={formState.skillsAndTraits}
                 className="form-input col-11"
                 style={{ lineHeight: '1', resize: 'horizontal' }}
                 onChange={handleChange}
               ></textarea>
               <button
-                className="btn btn-primary btn-sm col-1"
-                style={{ cursor: 'pointer' }}
+                className="p-1 btn btn-primary btn-lg"
+                style={{ cursor: 'pointer', lineHeight: '1' }}
                 type="submit"
               >
                 +
@@ -120,7 +121,7 @@ const PlayerForm = () => {
             </div>
             {error && (
               <div className="col-12 my-3 bg-danger text-white p-3">
-                {error.message}
+                Failed to Add New Player
               </div>
             )}
           </form>
