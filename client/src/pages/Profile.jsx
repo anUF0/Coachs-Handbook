@@ -21,7 +21,7 @@ const Profile = () => {
   //    }
   //  }
   //}, []);
-
+  debugger;
   const { userId: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_SINGLE_USER : QUERY_ME, {

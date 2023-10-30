@@ -36,7 +36,6 @@ const playerSchema = new Schema({
   ],
   cost: {
     type: Number,
-    required: true,
   },
 });
 

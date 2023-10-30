@@ -37,21 +37,19 @@ export const ADD_USER = gql`
 export const ADD_PLAYER = gql`
   mutation AddPlayer(
     $position: String!
-    $ma: Int!
-    $st: Int!
-    $ag: Int!
-    $pa: Int!
-    $av: Int!
-    $cost: Int!
+    $MA: Int!
+    $ST: Int!
+    $AG: Int!
+    $PA: Int!
+    $AV: Int!
   ) {
     addPlayer(
       position: $position
-      MA: $ma
-      ST: $st
-      AG: $ag
-      PA: $pa
-      AV: $av
-      cost: $cost
+      MA: $MA
+      ST: $ST
+      AG: $AG
+      PA: $PA
+      AV: $AV
     ) {
       _id
       coachName
@@ -62,7 +60,6 @@ export const ADD_PLAYER = gql`
       PA
       AV
       skillsAndTraits
-      cost
     }
   }
 `;

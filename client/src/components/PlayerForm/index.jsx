@@ -9,64 +9,33 @@ import { QUERY_PLAYERS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const PlayerForm = () => {
-  const [positionText, setPositionText] = useState('');
-  const [MAValue, setMAValue] = useState('');
-  const [STValue, setSTValue] = useState('');
-  const [AGValue, setAGValue] = useState('');
-  const [PAValue, setPAValue] = useState('');
-  const [AVValue, setAVValue] = useState('');
-  const [skillsAndTraitsText, setSNTText] = useState('');
-
+  const [formState, setFormState] = useState({
+    position: '',
+    MA: 0,
+    ST: 0,
+    AG: 0,
+    PA: 0,
+    AV: 0,
+  });
   const [addPlayer, { error }] = useMutation(ADD_PLAYER, {
     refetchQueries: [QUERY_PLAYERS, 'getPlayers', QUERY_ME, 'me'],
   });
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const { data } = await addPlayer({
-        variables: {
-          positionText,
-          MAValue,
-          STValue,
-          AGValue,
-          PAValue,
-          AVValue,
-          skillsAndTraitsText,
-          coachName: Auth.getProfile().data.username,
-        },
-      });
-
-      setPositionText('');
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(event.target);
+    setFormState({
+      ...formState,
+      [name]: event.target.type === 'number' ? parseInt(value) : value,
+    });
+  };
 
-    if (name === 'positionText') {
-      setPositionText(value);
-    }
-    if (name === 'MAValue') {
-      setMAValue(value);
-    }
-    if (name === 'STValue') {
-      setSTValue(value);
-    }
-    if (name === 'AGValue') {
-      setAGValue(value);
-    }
-    if (name === 'PAValue') {
-      setPAValue(value);
-    }
-    if (name === 'AVValue') {
-      setAVValue(value);
-    }
-    if (name === 'skillsAndTraitsText') {
-      setSNTText(value);
-    }
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    const { data } = await addPlayer({
+      variables: { ...formState },
+    });
   };
 
   return (
@@ -81,66 +50,72 @@ const PlayerForm = () => {
           >
             <div className="col-12 flex-row">
               <textarea
-                name="positionText"
+                name="position"
                 placeholder="Position"
-                value={positionText}
+                value={formState.position}
                 className="form-input col-2"
                 style={{ lineHeight: '1', resize: 'horizontal' }}
                 onChange={handleChange}
               ></textarea>
-              <textarea
-                name="MAValue"
+              <input
+                name="MA"
+                type="number"
                 placeholder="MA"
-                value={MAValue}
+                value={formState.MA}
                 className="form-input col-2"
                 style={{ lineHeight: '1', resize: 'horizontal' }}
                 onChange={handleChange}
-              ></textarea>
-              <textarea
-                name="STValue"
+              ></input>
+              <input
+                name="ST"
+                type="number"
                 placeholder="ST"
-                value={STValue}
+                value={formState.ST}
                 className="form-input col-2"
                 style={{ lineHeight: '1', resize: 'horizontal' }}
                 onChange={handleChange}
-              ></textarea>
-              <textarea
-                name="AGValue"
+              ></input>
+              <input
+                name="AG"
+                type="number"
                 placeholder="AG"
-                value={AGValue}
+                value={formState.AG}
                 className="form-input col-2"
                 style={{ lineHeight: '1', resize: 'horizontal' }}
                 onChange={handleChange}
-              ></textarea>
-              <textarea
-                name="PAValue"
+              ></input>
+              <input
+                name="PA"
+                type="number"
                 placeholder="PA"
-                value={PAValue}
+                value={formState.PA}
                 className="form-input col-2"
                 style={{ lineHeight: '1', resize: 'horizontal' }}
                 onChange={handleChange}
-              ></textarea>
-              <textarea
-                name="AVValue"
+              ></input>
+              <input
+                name="AV"
+                type="number"
                 placeholder="AV"
-                value={AVValue}
+                value={formState.AV}
                 className="form-input col-2 p-2"
                 style={{ lineHeight: '1', resize: 'horizontal' }}
                 onChange={handleChange}
-              ></textarea>
+              ></input>
               <textarea
                 name="skillsAndTraitsText"
                 placeholder="Skills/Traits"
-                value={skillsAndTraitsText}
-                className="form-input col-12"
+                value={formState.skillsAndTraitsText}
+                className="form-input col-11"
                 style={{ lineHeight: '1', resize: 'horizontal' }}
                 onChange={handleChange}
               ></textarea>
-            </div>
-
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Player
+              <button
+                className="btn btn-primary btn-sm col-1"
+                style={{ cursor: 'pointer' }}
+                type="submit"
+              >
+                +
               </button>
             </div>
             {error && (
