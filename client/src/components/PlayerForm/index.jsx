@@ -104,7 +104,7 @@ const PlayerForm = () => {
                 onChange={handleChange}
               ></input>
               <textarea
-                name="skillsAndTraitsText"
+                name="skillsAndTraits"
                 placeholder="Skills/Traits"
                 value={formState.skillsAndTraits}
                 className="form-input col-11"
@@ -121,7 +121,7 @@ const PlayerForm = () => {
             </div>
             {error && (
               <div className="col-12 my-3 bg-danger text-white p-3">
-                Failed to Add New Player
+                {error.message}
               </div>
             )}
           </form>

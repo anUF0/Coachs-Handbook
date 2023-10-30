@@ -9,18 +9,6 @@ import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const Profile = () => {
-  //const [userId, setUserId] = useState();
-
-  //useEffect(() => {
-  //  const token = Auth.getToken();
-  //  if (token) {
-  //    if (!Auth.isTokenExpired(token)) {
-  //      const user = Auth.getProfile();
-  //      setUserId(user.data._id);
-  //      console.log(user.data._id);
-  //    }
-  //  }
-  //}, []);
   const { userId: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_SINGLE_USER : QUERY_ME, {
@@ -31,10 +19,6 @@ const Profile = () => {
   if (Auth.loggedIn() && Auth.getProfile().data._id === userParam) {
     return <Navigate to="/me" />;
   }
-  console.log({
-    userParam,
-    user,
-  });
 
   if (loading) {
     return <div>Loading...</div>;

@@ -42,6 +42,7 @@ export const ADD_PLAYER = gql`
     $AG: Int!
     $PA: Int!
     $AV: Int!
+    $skillsAndTraits: String
   ) {
     addPlayer(
       position: $position
@@ -50,6 +51,7 @@ export const ADD_PLAYER = gql`
       AG: $AG
       PA: $PA
       AV: $AV
+      skillsAndTraits: $skillsAndTraits
     ) {
       _id
       coachName
@@ -66,7 +68,7 @@ export const ADD_PLAYER = gql`
 
 export const DELETE_PLAYER = gql`
   mutation RemovePlayer($playerId: ID!) {
-    removePlayer(playerId: $playerId) {
+    removePlayer(_id: $playerId) {
       _id
       position
     }

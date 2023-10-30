@@ -1,15 +1,21 @@
-import { useParams } from 'react-router-dom';
-import { DELETE_PLAYER } from '../../utils/mutations';
-import { useMutation } from '@apollo/client';
-import { QUERY_PLAYERS, QUERY_ME } from '../../utils/queries';
-
+//import { DELETE_PLAYER } from '../../utils/mutations';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../../utils/queries';
+//import { useParams } from 'react-router-dom';
+//import Auth from '../../utils/auth';
 const PlayerList = ({ players = [] }, teamName, showTeamName) => {
-  const { userId: userParams } = useParams();
-  const [removePlayer, { error }] = useMutation(DELETE_PLAYER, {
-    refetchQueries: [QUERY_PLAYERS, 'getPlayers', QUERY_ME, 'me'],
-  });
+  //const [removePlayer, { error }] = useMutation(DELETE_PLAYER, {
+  //  refetchQueries: [QUERY_PLAYERS, 'getPlayers', QUERY_ME, 'me'],
+  //});
 
-  //const handleClick = async (event)=> ()
+  const { loading, data } = useQuery(QUERY_ME);
+
+  const user = data?.me || data?.user || {};
+
+  //const handleClick = async () => {
+  //  const playerId = this.player.id;
+  //  const { data } = await removePlayer({ variables: { playerId } });
+  //};
 
   if (!players.length) {
     return <h3>Can't Play the Game without Players</h3>;
@@ -33,8 +39,12 @@ const PlayerList = ({ players = [] }, teamName, showTeamName) => {
                   {player.AV}+ | Skills and Traits: {player.skillsAndTraits}
                   {/*formattedSkillAndTraits*/}
                 </p>
-                {/*!userParams && (
-                  <button className="btn btn-danger">Remove</button>
+                {/*Auth.loggedIn() && Auth.getProfile().data._id === user._id ? (
+                  <button className="btn btn-danger" onClick={handleClick}>
+                    Remove
+                  </button>
+                ) : (
+                  ''
                 )*/}
               </div>
             </div>

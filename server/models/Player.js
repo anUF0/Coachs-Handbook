@@ -31,9 +31,12 @@ const playerSchema = new Schema({
     type: Number,
     required: true,
   },
-  skillsAndTraits: [
-    { type: String, trim: true, required: true, default: ['None'] },
-  ],
+  skillsAndTraits: {
+    type: String,
+    trim: true,
+    required: true,
+    default: 'None',
+  },
   cost: {
     type: Number,
   },
