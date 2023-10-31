@@ -26,6 +26,14 @@ Alternatively, it can be run locally with the command 'npm run dev' after clonin
   -These lists of other players are links where you can
 - Once a user has signed up, including registering their team name, they can access their profile and start adding players to their roster.
 
+## Screenshots
+
+- Home Page
+  ![Home](./assests/Home-sukusho.png)
+
+- Profile Page
+  ![Profile](./assests/Profile-sukusho.png)
+
 ## Technologies
 
 This project was made with the help of:
