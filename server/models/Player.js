@@ -34,7 +34,6 @@ const playerSchema = new Schema({
   skillsAndTraits: {
     type: String,
     trim: true,
-    required: true,
     default: 'None',
   },
   cost: {

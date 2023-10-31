@@ -38,7 +38,7 @@ const Header = () => {
               </Link>
             </>
           )}
-          {/*<Link className="btn btn-lg btn-light m-2 " to="/signup">
+          {/*<Link className="btn btn-lg btn-light m-2">
             Install
           </Link>*/}
         </div>
